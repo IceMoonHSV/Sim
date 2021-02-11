@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sim>
+	<delete>false</delete>
+	<errordirectory>C:\Users\Public\Documents\</errordirectory>
+		<task>
+		<config>
+			<name>Notepad_Paste</name>
+			<loop>1</loop>
+			<pause>500</pause>
+		</config>
+		<actions>
+			<setclipboard>Here is the paste value</setclipboard>
+			<!-- Start Notepad from file path -->
+			<process>C:\Windows\notepad.exe</process>
+			<!-- Plaintext to type -->
+			<plain>This is a test for a pasted value.</plain>
+			<special>{ENTER}</special>
+			<getclipboard></getclipboard>
+			<special>{CONTROL}+s</special>
+			<plain>pastedtext</plain>
+			<special>{ENTER}</special>
+			<!-- Kill any processes associated with this task. -->
+			<kill>true</kill>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>Google_Search</name>
+			<loop>1</loop>
+			<pause>5000</pause>
+		</config>
+		<actions>
+			<!-- Starts default browser to go to Google -->
+			<process>https://google.com</process>
+			<!-- Plaintext that is typed into Google -->
+			<plain>XML examples</plain>
+			<special>{ENTER}</special>
+			<sleep>2000</sleep>
+			<special>{TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB}</special>
+			<special>{ENTER}</special>
+			<!-- Kill any processes associated with this task. -->
+			<kill>true</kill>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>PowerShell_test</name>
+			<loop>3</loop>
+			<pause>1000</pause>
+		</config>
+		<actions>
+			<powershell>$date=Get-Date; echo $date >> datetest.txt</powershell>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>Notepad_Reopen</name>
+			<loop>1</loop>
+			<pause>1000</pause>
+		</config>
+		<actions>
+			<setclipboard>Here is the paste value</setclipboard>
+			<!-- Reopen previously saved text document -->
+			<process>"C:\path\to\pastedtext.txt"</process>
+			<special>{ARROWDOWN} {END} {ENTER}</special>
+			<plain>This will be typed further down.</plain>
+			<special>{ENTER}</special>
+			<special>{CONTROL}+{SHIFT}+s</special>
+			<plain>pastedandtyped</plain>
+			<special>{ENTER}</special>
+			<!-- Kill any processes associated with this task. -->
+			<kill>true</kill>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>Notepad_calc</name>
+			<loop>2</loop>
+			<pause>5000</pause>
+		</config>
+		<actions>
+			<process>C:\Windows\notepad.exe</process>
+			<process>C:\Windows\System32\calc.exe</process>
+			<plain>800+200</plain>
+			<special>{ENTER}</special>
+			<special>{CONTROL}+c {ALT}+{TAB}</special>
+			<getclipboard></getclipboard>
+			<plain>  &lt;-- final amount  </plain>
+			<special>{ENTER} {CONTROL}+s</special>
+			<plain>finalamount.txt</plain>
+			<special>{ENTER}</special>
+			<!-- Kill any processes associated with this task. -->
+			<kill>true</kill>
+		</actions>
+	</task>
+</sim>

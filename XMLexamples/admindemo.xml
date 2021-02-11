@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sim>
+	<delete>false</delete>
+	<errordirectory>C:\Users\Public\Documents\</errordirectory>
+	<task>
+		<config>
+			<name>PowerShell_test</name>
+			<loop>3</loop>
+			<pause>1000</pause>
+		</config>
+		<actions>
+			<powershell>ipconfig /all | Set-Clipboard </powershell>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>Check_IP</name>
+			<loop>1</loop>
+			<pause>1000</pause>
+		</config>
+		<actions>
+			<process>"C:\Windows\System32\cmd.exe"</process>
+			<!-- Plaintext to type -->
+			<plain>ipconfig /all</plain>
+			<special>{ENTER}</special>
+			<plain>dir C:\ /a /od /b /s | findstr python3.exe</plain>
+			<special>{ENTER}</special>
+			<sleep>6000</sleep>
+			<!-- Kill any processes associated with this task. -->
+			<kill>true</kill>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>Google_Search</name>
+			<loop>1</loop>
+			<pause>5000</pause>
+		</config>
+		<actions>
+			<!-- Starts default browser to go to Google -->
+			<process>https://google.com</process>
+			<!-- Plaintext that is typed into Google -->
+			<plain>XML examples</plain>
+			<special>{ENTER}</special>
+			<sleep>5000</sleep>
+			<special>{TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB} {TAB}</special>
+			<special>{ENTER}</special>
+			<!-- Kill any processes associated with this task. -->
+			<kill>true</kill>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>PowerShell_test</name>
+			<loop>3</loop>
+			<pause>1000</pause>
+		</config>
+		<actions>
+			<powershell>C:\path\to\script.ps1</powershell>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>Notepad_myIP</name>
+			<loop>1</loop>
+			<pause>1000</pause>
+		</config>
+		<actions>
+			<process>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</process>
+			<sleep>4000</sleep>
+			<plain>ipconfig /all | Set-Clipboard</plain>
+			<special>{ENTER}</special>
+			<process>C:\Windows\notepad.exe</process>
+			<sleep>3000</sleep>
+			<getclipboard></getclipboard>
+			<special>{ENTER} {ENTER} {ENTER}</special>
+			<plain>This is the IP info for my computer.</plain>
+			<special>{CONTROL}+{SHIFT}+s</special>
+			<plain>myIP</plain>
+			<special>{ENTER}</special>
+			<!-- Kill any processes associated with this task. -->
+			<kill>true</kill>
+		</actions>
+	</task>
+	<task>
+		<config>
+			<name>Open_tabs</name>
+			<loop>1</loop>
+			<pause>5000</pause>
+		</config>
+		<actions>
+			<process>https://google.com</process>
+			<plain>C# dictonaries</plain>
+			<special>{ENTER}</special>
+			<special>{CONTROL}+t</special>
+			<plain>stackoverflow</plain>
+			<special>{ENTER}</special>
+			<sleep>2000</sleep>
+			<special>{ARROWDOWN} {ARROWDOWN} {ARROWDOWN}</special>
+			<special>{CONTROL}+t</special>
+			<plain>google.com</plain>
+			<special>{ENTER}</special>
+			<sleep>2000</sleep>
+			<plain>how to search things</plain>
+			<!-- Kill any processes associated with this task. -->
+			<kill>true</kill>
+		</actions>
+	</task>
+</sim>
